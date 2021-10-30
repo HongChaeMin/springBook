@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://JAVA.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
@@ -22,6 +22,11 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
+		<!-- 책 님아... 이렇게 안되잖아... -->
+		<!-- <init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		
@@ -29,5 +34,11 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 이케 하니까 됨 구글링 최고ㅎㅁㅎ -->
+	<error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/custom404.jsp</location>
+ 	</error-page> 
 
 </web-app>

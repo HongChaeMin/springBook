@@ -33,6 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		// 경로 설정 해놓은 곳에 파일이 있어서 그 파일이 뜨는거임
 		return "home";
 	}
 	
