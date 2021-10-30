@@ -36,5 +36,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/ghdco/sqldeveloper/jdbc/lib/ojdbc8.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/ghdco/eclipse/java-2021-033/eclipse/lombok.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
