@@ -75,7 +75,7 @@
 			TITLE = #{title}
 			, CONTENT = #{content}
 			, WRITER = #{writer}
-			, UPDATEDATE =sysdate
+			, UPDATEDATE = sysdate
 		WHERE
 			BON = #{bon}
 		
