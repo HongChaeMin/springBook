@@ -2,11 +2,13 @@ package org.zerock.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -15,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 public class BoardServiceImpl implements BoardService{
 
 	// spring 4.3이상부터 자동 처리
-	// @Setter(onMethod_ = @Autowired) -> lombok을 이용하면 이렇게 만들어도 됨
+	@Setter(onMethod_ = @Autowired) // -> lombok을 이용하면 이렇게 만들어도 됨
 	private BoardMapper boardMapper;
 	
 	@Override

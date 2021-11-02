@@ -126,12 +126,12 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		<!-- build path에 추가해줬지만 안먹었던 것 같다... 왜??? 덕분에 이틀 날렸다 -->
+		<!-- build path에 추가해줬지만 안먹었던 것 같다... 왜??? 덕분에 이틀 날렸다
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0.4</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://github.com/brettwooldridge/HikariCP -->
 		<dependency>
