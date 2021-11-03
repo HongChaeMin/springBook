@@ -49,7 +49,7 @@ public class BoardController {
 		log.info("update : " + board);
 		
 		if (boardService.updateBoard(board)) {
-			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("result", board.getBon());
 		}
 		return "redirect:/board/list";
 	}
@@ -62,5 +62,10 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/board/list";
+	}
+	
+	@GetMapping("/boardWrite")
+	public void boardWrite() {
+		
 	}
 }
