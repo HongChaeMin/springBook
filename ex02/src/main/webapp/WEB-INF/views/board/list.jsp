@@ -76,7 +76,7 @@
 								<tbody>
 									<c:forEach var="board" items="${list}">
 										<tr>
-											<td><c:out value="${board.bon}" /></td>
+											<td><a href='/board/showBoard?bon=${board.bon}'>${board.bon}</a></td>
 											<td><c:out value="${board.title}" /></td>
 											<td><c:out value="${board.writer}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" /></td>

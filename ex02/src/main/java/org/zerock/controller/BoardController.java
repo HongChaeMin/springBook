@@ -40,7 +40,7 @@ public class BoardController {
 	
 	@GetMapping("/selectBoard")
 	public void selectBoard(@RequestParam("bon") Long bon, Model model) {
-		log.info("/get");
+		log.info("/selectBoard");
 		model.addAttribute("board", boardService.selectBoard(bon));
 	}
 	
@@ -68,4 +68,11 @@ public class BoardController {
 	public void boardWrite() {
 		
 	}
+	
+	@GetMapping("/showBoard")
+	public void showBoard(@RequestParam("bon") Long bon, Model model) {
+		log.info("/showBoard");
+		model.addAttribute("board", boardService.selectBoard(bon));
+	}
+	
 }
