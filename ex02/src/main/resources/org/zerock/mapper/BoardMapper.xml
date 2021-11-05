@@ -7,6 +7,7 @@
 			SELECT
 				BON
 				, TITLE
+				, CONTENT
 				, WRITER
 				, REGDATE
 				, UPDATEDATE
@@ -14,6 +15,7 @@
 				TBL_BOARD
 			WHERE 
 				BON > 0
+			ORDER BY BON
 		]]>
 	</select>
 	
@@ -49,10 +51,11 @@
 		)
 	</insert>
 	
-	<select id="selectBorad" resultType="org.zerock.domain.BoardVO">
+	<select id="selectBoard" resultType="org.zerock.domain.BoardVO">
 		SELECT
 			BON
 			, TITLE
+			, CONTENT
 			, WRITER
 			, REGDATE
 			, UPDATEDATE

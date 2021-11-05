@@ -75,8 +75,8 @@
 								</thead>
 								<tbody>
 									<c:forEach var="board" items="${list}">
-										<tr>
-											<td><a href='/board/showBoard?bon=${board.bon}'>${board.bon}</a></td>
+										<tr onclick='location.href="/board/showBoard?bon=${board.bon}"'>
+											<td>${board.bon}</td>
 											<td><c:out value="${board.title}" /></td>
 											<td><c:out value="${board.writer}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" /></td>
@@ -85,6 +85,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							<button class="btn btn-info" onclick="location.href='/board/boardWrite'">Write</button>
 						</div>
 					</div>
 				</div>
@@ -114,12 +115,14 @@
 	        
 	        checkModal(result);
 	        
+	        history.replaceState({}, null, null);
+	        
 	        function checkModal(result) {
-	        	if (result === '') return;
-	        	else {
+	        	if (result === '' || history.state) return;
+	        	if (ParseInt(result) > 0) {
 	        		$(".modal-body").html("게시글 " + parseInt(result) + "번이 등록되었습니다.");
-	            	$("#myModal").modal("show");
 	        	}
+            	$("#myModal").modal("show");
 	        }
 		});
 	</script>

@@ -38,9 +38,9 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	@GetMapping("/selectBoard")
+	@GetMapping({"/selectBoard", "/updatePage"})
 	public void selectBoard(@RequestParam("bon") Long bon, Model model) {
-		log.info("/selectBoard");
+		log.info("/selectBoard or /updatePage");
 		model.addAttribute("board", boardService.selectBoard(bon));
 	}
 	

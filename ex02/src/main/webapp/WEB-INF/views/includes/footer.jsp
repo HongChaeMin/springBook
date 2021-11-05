@@ -27,5 +27,23 @@
         	.attr("class", "sidebar-nav navbar-collapse collapse")
         	.attr("aria-expanded", 'false')
         	.attr("style", "height:1px");
+        
+        var formObj = $("form");
+        
+        $('button').on("click", function(e) {
+        	e.preventDefault();
+        	
+        	var operation = $(this).data("oper");
+        	
+        	if(operation == 'remove') {
+        		formObj.attr("action", "/board/deleteBoard");
+        	} else if (operation === 'list') {
+        		formObj.attr("action", "/board/list");
+        		formObj.empty();
+        		return;
+        	}
+        	formObj.submit();
+        });
+        
     });
     </script>
