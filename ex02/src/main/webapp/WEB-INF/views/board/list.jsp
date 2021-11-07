@@ -75,7 +75,7 @@
 								</thead>
 								<tbody>
 									<c:forEach var="board" items="${list}">
-										<tr onclick='location.href="/board/showBoard?bon=${board.bon}"'>
+										<tr onclick='location.href="/board/showBoard?bon=${board.bon}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}"'>
 											<td>${board.bon}</td>
 											<td><c:out value="${board.title}" /></td>
 											<td><c:out value="${board.writer}" /></td>

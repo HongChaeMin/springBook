@@ -28,7 +28,7 @@ public class BoardController {
 	public void list(Criteria cri, Model model) {
 		log.info("list : " + cri) ;
 		model.addAttribute("list", boardService.selectBoardList(cri));
-		model.addAttribute("pageMaker", new PageDTO(cri, 123));
+		model.addAttribute("pageMaker", new PageDTO(cri, boardService.getTotal(cri)));
 	}
 	
 	@PostMapping("/insertBoard")
@@ -59,12 +59,16 @@ public class BoardController {
 	}
 	
 	@PostMapping("/deleteBoard")
-	public String deleteBoard(@RequestParam("bon") Long bon, RedirectAttributes rttr) {
+	public String deleteBoard(@RequestParam("bon") Long bon, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("delete : " + bon);
 		
 		if (boardService.deleteBoard(bon)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		
 		return "redirect:/board/list";
 	}
 	
@@ -73,10 +77,10 @@ public class BoardController {
 		
 	}
 	
-	@GetMapping("/showBoard")
-	public void showBoard(@RequestParam("bon") Long bon, Model model) {
-		log.info("/showBoard");
-		model.addAttribute("board", boardService.selectBoard(bon));
-	}
+	/*
+	 * @GetMapping("/showBoard") public void showBoard(@RequestParam("bon") Long
+	 * bon, Model model) { log.info("/showBoard"); model.addAttribute("board",
+	 * boardService.selectBoard(bon)); }
+	 */
 	
 }

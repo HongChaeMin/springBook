@@ -82,8 +82,13 @@
 							<div class="form-group">
 								<label>Writer</label><input class="form-control" name="writer" value="${board.writer }" readonly>
 							</div>
-							<button data-oper="modify" class="btn btn-default" onclick="location.href='/board/updatePage?bon=${board.bon}'">Modify</button>
+							<button data-oper="modify" class="btn btn-default" onclick="location.href='/board/updatePage'">Modify</button>
 							<button data-oper="list" class="btn btn-info" onclick="location.href='/board/list?pageNum=${cri.pageNum}&amount=${cri.amount}'">List</button>
+							<form action="/board/updatePage" method="get">
+								<input type="hidden" name="bon" value="${board.bon}">
+								<input type="hidden" name="pageNum" value="${cri.pageNum}">
+								<input type="hidden" name="amount" value="${cri.amount}">
+							</form>
 						</div>
 					</div>
 				</div>

@@ -80,8 +80,10 @@
 								
 								<button data-oper="submit" class="btn btn-default">Modify</button>
 								<button data-oper="remove" class="btn btn-danger">Remove</button>
-								<button data-oper="list" class="btn btn-info" onclick="location.href='/board/list'">List</button>
+								<button data-oper="list" class="btn btn-info" onclick="location.href='/board/list?pageNum=${cri.pageNum}&amount=${cri.amount}'">List</button>
 							</form>
+							<input type="hidden" id="pageNum" value="${cri.pageNum}">
+							<input type="hidden" id="amount" value="${cri.amount}">
 						</div>
 					</div>
 				</div>

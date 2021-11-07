@@ -36,7 +36,7 @@
         	var operation = $(this).data("oper");
         	
         	if(operation == 'remove') {
-        		formObj.attr("action", "/board/deleteBoard");
+        		formObj.attr("action", "/board/deleteBoard?pageNum=" + $("#pageNum").val() + "&amount=" + $("#amount").val());
         	} else if (operation === 'list') {
         		formObj.attr("action", "/board/list");
         		formObj.empty();

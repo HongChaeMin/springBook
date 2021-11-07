@@ -110,4 +110,8 @@
 		]]>
 	</select>
 	
+	<select id="getTotalCount">
+		SELECT COUNT(*) FROM TBL_BOARD WHERE BON > 0
+	</select>
+	
 </mapper>
