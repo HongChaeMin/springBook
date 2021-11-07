@@ -104,14 +104,51 @@
 					, UPDATEDATE
 				FROM
 					TBL_BOARD
-				WHERE ROWNUM <= #{pageNum} * #{amount}
-			)
-			WHERE RN > (#{pageNum} - 1) * #{amount}
-		]]>
+				WHERE 
+			]]>
+			<trim prefix="(" suffix=")AND " prefixOverrides="OR">
+				<foreach item="type" collection="typeArr">
+					<choose>
+						<when test="type == 'T'.toString()">
+							TITLE LIKE '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							CONTENT LIKE '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							WRITER LIKE '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</foreach>
+			</trim>
+			<![CDATA[
+				ROWNUM <= #{pageNum} * #{amount}
+				)
+				WHERE RN > (#{pageNum} - 1) * #{amount}	
+			]]>
 	</select>
 	
-	<select id="getTotalCount">
+	<select id="getTotalCount" resultType="int" parameterType="org.zerock.domain.Criteria">
 		SELECT COUNT(*) FROM TBL_BOARD WHERE BON > 0
 	</select>
+	
+	<!-- ORA-00907: 누락된 우괄호 -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=")AND " prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<choose>
+					<when test="type == 'T'.toString()">
+						TITLE LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						CONTENT LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'W'.toString()">
+						WRITER LIKE '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</foreach>
+		</trim>
+	</sql>
 	
 </mapper>

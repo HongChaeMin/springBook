@@ -49,13 +49,13 @@ public class BoardController {
 	}
 	
 	@PostMapping("/updateBoard")
-	public String updateBoard(BoardVO board, RedirectAttributes rttr) {
+	public String updateBoard(BoardVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("update : " + board);
 		
 		if (boardService.updateBoard(board)) {
 			rttr.addFlashAttribute("result", board.getBon());
 		}
-		return "redirect:/board/list";
+		return "redirect:/board/list" + cri.getListLink();
 	}
 	
 	@PostMapping("/deleteBoard")
@@ -69,7 +69,7 @@ public class BoardController {
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		
-		return "redirect:/board/list";
+		return "redirect:/board/list" + cri.getListLink();
 	}
 	
 	@GetMapping("/boardWrite")

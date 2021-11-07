@@ -85,6 +85,21 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							<form id="schForm" action="/board/list" method="get">
+								<select name="type" class="form-control col-6">
+									<option value="" <c:if test="${pageMaker.cri.type eq null}">selected</c:if>>--</option>
+									<option value="T" <c:if test="${pageMaker.cri.type eq 'Y'}">selected</c:if>>제목</option>
+									<option value="C" <c:if test="${pageMaker.cri.type eq 'C'}">selected</c:if>>내용</option>
+									<option value="W" <c:if test="${pageMaker.cri.type eq 'W'}">selected</c:if>>작성자</option>
+									<option value="TC" <c:if test="${pageMaker.cri.type eq 'TC'}">selected</c:if>>제목 or 내용</option>
+									<option value="TW" <c:if test="${pageMaker.cri.type eq 'TW'}">selected</c:if>>제목 or 작성자</option>
+									<option value="TWC" <c:if test="${pageMaker.cri.type eq 'TWC'}">selected</c:if>>All</option>
+								</select>
+								<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+								<input name="keyword" value="${pageMaker.cri.keyword}" class="form-control col-6">
+								<button class="btn btn-default">Search</button>
+							</form>
 							<button class="btn btn-info" onclick="location.href='/board/boardWrite'">Write</button>
 							<div class="pull-right">
 								<ul class="pagination">
@@ -99,7 +114,7 @@
 									</c:if>
 								</ul>
 							</div>
-							<form id="actionForm" action="/board/list" method="get">
+							<form id="actionForm">
 								<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 							</form>
@@ -151,6 +166,14 @@
 	        	actionForm.submit();
 	        });
 	        
+	        var schForm = $("#schForm");
+	        
+	        $("#schForm button").on("click", function(e) {
+	        	schForm.find("input[name='pageNum']").val("1");
+	        	e.preventDefault();
+	        	
+	        	schForm.submit();
+	        });
 	        
 		});
 	</script>
