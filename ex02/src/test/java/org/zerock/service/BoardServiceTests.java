@@ -37,10 +37,10 @@ public class BoardServiceTests {
 		log.info("생성된 게시물의 번호 : " + board.getBon());
 	}
 	
-	@Test
+	/*@Test
 	public void testSelectBoardList() {
 		boardService.selectBoardList().forEach(board -> log.info(board));
-	}
+	}*/
 	
 	@Test
 	public void testSelectBoard() {

@@ -48,6 +48,12 @@
 
 <body>
 
+	<form id="operForm" action="/board/modify" method="get">
+		<input type="hidden" id="bon" name="bon" value="${board.bon}">
+		<input type="hidden" id="pageNum" name="pageNum" value="${cri.pageNum}">
+		<input type="hidden" id="amount" name="amount" value="${cri.amount}">
+	</form>
+
 	<div id="wrapper">
 
 		<%@ include file="../includes/header.jsp"%>
@@ -77,7 +83,7 @@
 								<label>Writer</label><input class="form-control" name="writer" value="${board.writer }" readonly>
 							</div>
 							<button data-oper="modify" class="btn btn-default" onclick="location.href='/board/updatePage?bon=${board.bon}'">Modify</button>
-							<button data-oper="list" class="btn btn-info" onclick="location.href='/board/list'">List</button>
+							<button data-oper="list" class="btn btn-info" onclick="location.href='/board/list?pageNum=${cri.pageNum}&amount=${cri.amount}'">List</button>
 						</div>
 					</div>
 				</div>

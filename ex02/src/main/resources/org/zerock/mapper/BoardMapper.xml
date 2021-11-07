@@ -84,7 +84,6 @@
 		
 	</update>
 	
-	<!-- 애 왜 계속 전체 데이터 가져오지 ? 확인하기 -->
 	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
 		<![CDATA[
 			SELECT
@@ -107,7 +106,7 @@
 					TBL_BOARD
 				WHERE ROWNUM <= #{pageNum} * #{amount}
 			)
-			WHERE RN > (#{pageNum - 1) * #{amount})
+			WHERE RN > (#{pageNum} - 1) * #{amount}
 		]]>
 	</select>
 	
